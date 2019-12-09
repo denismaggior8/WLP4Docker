@@ -11,7 +11,11 @@ import javax.persistence.Query;
 
 import org.apache.log4j.Logger;
 
+import com.intesasanpaolo.Y1.Utility.Y1Exception;
 import com.intesasanpaolo.Y1.WLP4Docker.model.TABSOA;
+import com.intesasanpaolo.Y1.WLP4Docker.model.TmlResourceExit;
+import com.intesasanpaolo.Y1.view.iJ2DB;
+import com.intesasanpaolo.Y1.was.J2DBimpl;
 
 
 
@@ -19,7 +23,7 @@ public class CL_dao {
 	public Logger pLog;
 
 	protected EntityManager pEntityManager;
-//	protected iJ2DB pJ2DB;
+	protected iJ2DB pJ2DB;
 
 	@PostConstruct
 	public void init() {
@@ -51,10 +55,18 @@ public class CL_dao {
 //		this.pJ2DB = pJ2DB;
 //	}
 
-	public TABSOA queryQODB262(String aCOD_TABELLA, String aCHIAVE_TABELLA) {
+	public TmlResourceExit queryTmlResourceExit(int aID) {
 
-		List<TABSOA> _rowList = null;
+		List<TmlResourceExit> _rowList = null;
 
+		try {
+			pJ2DB = new J2DBimpl();
+		} catch (Y1Exception e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		
+		
 		try {
 			// Query query = _EntityManager.createNativeQuery("SELECT * FROM "
 			// + CONTRATTO_CCC_A1 + " where " + "COD_AZIENDA = ?1 and "
@@ -66,10 +78,9 @@ public class CL_dao {
 			// ;
 
 			Query query = pEntityManager.createQuery(
-					"SELECT t from  TABSOA as t where t.id.codTabella= ?1 AND t.id.chiaveTabella = ?2", TABSOA.class);
+					"SELECT t from TmlResourceExit as t where t.id = ?1 ", TmlResourceExit.class);
 			// query.setLockMode(LockModeType.NONE);
-			query.setParameter(1, aCOD_TABELLA);
-			query.setParameter(2, aCHIAVE_TABELLA);
+			query.setParameter(1, aID);
 
 			_rowList = query.getResultList();
 

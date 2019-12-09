@@ -9,6 +9,7 @@ import org.apache.log4j.Logger;
 
 import com.intesasanpaolo.Y1.WLP4Docker.model.Output;
 import com.intesasanpaolo.Y1.WLP4Docker.model.TABSOA;
+import com.intesasanpaolo.Y1.WLP4Docker.model.TmlResourceExit;
 import com.intesasanpaolo.Y1.WLP4Docker.view.iBS_PocWLP4Docker;
 
 
@@ -41,30 +42,19 @@ public class BS_PocWLP4Docker implements iBS_PocWLP4Docker {
 
 	}
 
-	public Output queryQODB262(String aCodiceABI, String aCOD_TABELLA, String aCHIAVE_TABELLA) {
-		// EntityManager _em = null;
-		// try {
-		// _em = pJ2DB.getEntityManager(aCodiceABI, ACRONIMO, OPERATION,
-		// Persistence_Unit_Name);
-		// } catch (Y1Exception e) {
-		// pLog.fatal(e.getMessage());
-		// _o.setRETCODE("99");
-		// _o.setMESSAGGIO("errore grave " + e.getMessage());
-		// return _o;
-		// }
-		//
+	public Output queryTmlResourceExit(int aID) {
 		Output _o = new Output();
 
 		pCL_dao.setEntityManager(pEM);
 
-		TABSOA _tabsoa = pCL_dao.queryQODB262(aCOD_TABELLA, aCHIAVE_TABELLA);
+		TmlResourceExit _TmlResourceExit = pCL_dao.queryTmlResourceExit(aID);
 
-		if (_tabsoa == null) {
+		if (_TmlResourceExit == null) {
 			_o.setRETCODE("20");
 			_o.setMESSAGGIO("in input è stato impostato un codice Entità inesistente");
 		} else {
 			_o.setRETCODE("00");
-			_o.setMESSAGGIO(_tabsoa.getAreaDati());
+//			_o.setMESSAGGIO(_tabsoa.getAreaDati());
 		}
 
 		return _o;

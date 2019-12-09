@@ -4,6 +4,7 @@
 	<!-- Enable features -->
 	<featureManager>
 		<feature>javaee-7.0</feature>
+		<feature>jpa-2.1</feature>
 	</featureManager>
 
 	<!-- Encoded password can be generated using bin/securityUtility -->
@@ -18,7 +19,13 @@
 	<httpEndpoint id="defaultHttpEndpoint" httpPort="9080"
 		httpsPort="9443" />
 
-	<logging consoleLogLevel="INFO"></logging>
+	
+	<logging consoleLogLevel="INFO" traceSpecification="openjpa.jdbc.SQL=all"
+	  traceFileName="trace.log"
+  	maxFileSize="20"
+  	maxFiles="10"
+  	traceFormat="BASIC" />
+
 	<library apiTypeVisibility="spec,ibm-api,api,third-party"
 		id="DB2lib">
 		<fileset dir="f:/tmp/"
@@ -28,18 +35,29 @@
 	<!-- portNumber="5250" serverName="db2y.mframe.sanpaoloimi.com" -->
 
 	<dataSource 
-		id="DB01025DBAT04NR" jndiName="jdbc/DB01025DBAT04NR"
+		id="DB01025DUST04NR" jndiName="jdbc/DB01025DUST04NR"
 		type="javax.sql.DataSource">
 		<properties.db2.jcc databaseName="DB2UTOSC" user="u0e1591" portNumber="18019" serverName="192.168.50.235"
-			traceFile="f:/tmp/DB01025DBPT04NR.log" traceFileAppend="true"
+			traceFile="f:/tmp/DB01025DUST04NR.log" traceFileAppend="true"
+			traceLevel="3" password="gi0lae11"/>
+		<jdbcDriver libraryRef="DB2lib">
+		</jdbcDriver>
+	</dataSource>
+
+	<dataSource 
+		id="DB01025GAST04NR" jndiName="jdbc/DB01025GAST04NR"
+		type="javax.sql.DataSource">
+		<properties.db2.jcc databaseName="SDGAM01S" user="u0e1591" portNumber="18236" serverName="sdga.mframe.sanpaoloimi.com"
+			traceFile="f:/tmp/DB01025GAST04NR.log" traceFileAppend="true"
 			traceLevel="3" password="gi0lae11"/>
 		<jdbcDriver libraryRef="DB2lib">
 		</jdbcDriver>
 	</dataSource>
 
 
+
 	<enterpriseApplication id="WLP4Docker-ear"
 		location="WLP4Docker-ear.ear" name="WLP4Docker-ear">
-		<web-ext context-root="WLP4Docker"></web-ext>
+		<web-ext context-root="WLP4Docker" moduleName="WLP4Docker-war"></web-ext>
 	</enterpriseApplication>
 </server>

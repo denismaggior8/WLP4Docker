@@ -13,12 +13,13 @@ import com.intesasanpaolo.Y1.WLP4Docker.model.Output;
 public interface iPocWLP4DockerWS {
 
 	@WebMethod
+	public String getProperties();
+
+	@WebMethod
 	public String HW();
 
-	@WebMethod(operationName = "queryQODB262")
-	public void queryQODB262(@WebParam(name = "CodiceABI", targetNamespace = "", mode = Mode.IN) String aCodiceABI,
-			@WebParam(name = "Cod_Tabella", targetNamespace = "") String aCod_Tabella,
-			@WebParam(name = "Chiave_Tabella", targetNamespace = "") String aChiaveName,
+	@WebMethod(operationName = "queryTmlResourceExit")
+	public void queryTmlResourceExit (@WebParam(name = "ID", targetNamespace = "", mode = Mode.IN) int aID,
 			@WebParam(name = "Output", targetNamespace = "", mode = Mode.INOUT) Holder<Output> aOutput);
 
 	@WebMethod(operationName = "loadCache")

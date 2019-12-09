@@ -1,11 +1,11 @@
 #-DY1.WasConfig=da_XOR_MultiBanca_su_cics_cloni
-#-DY1.Stage=A
-#-DY1.StgY=StgA
+-DY1.Stage=A
+-DY1.StgY=StgA
 #-DY1.j2cConfigProperties=Y1j2cConfig.properties
-#-DY1.j2dbConfigProperties=F:/PortablesApps/wlp/Y1J2DBConfig.properties
-#-DY1.ZosEnvironment=WAS
-#-Ddb2.jcc.propertiesFile=DB2jcc.properties
-#-Ddb2.jcc.traceLevel=0
+-DY1.j2dbConfigProperties=F:/PortablesApps/wlp/Y1J2DBConfig.properties
+-DY1.ZosEnvironment=WAS
+-Ddb2.jcc.propertiesFile=DB2jcc.properties
+-Ddb2.jcc.traceLevel=0
 #-Djava.util.logging.config.file=log4j.properties
 #-Dlog4j.configuration=file:/prodotti/prodotti_stgZ/wlpv85/xc/shared/config/appserver/log4j.properties
 -Dlog4j.debug=true

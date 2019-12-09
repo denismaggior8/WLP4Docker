@@ -1,16 +1,16 @@
-package com.intesasanpaolo.Y1.WLP4Docker.web;
+package com.intesasanpaolo.Y1.WLP4Docker.view;
 
 import javax.ejb.EJB;
+import javax.json.Json;
+import javax.json.JsonObjectBuilder;
 import javax.jws.WebService;
 import javax.xml.ws.Holder;
 
 import com.intesasanpaolo.Y1.WLP4Docker.model.Output;
-import com.intesasanpaolo.Y1.WLP4Docker.view.iBS_PocWLP4Docker;
-import com.intesasanpaolo.Y1.WLP4Docker.view.iPocWLP4DockerWS;
 import com.intesasanpaolo.Y1.chrono.Y1Chrono;
- 
-//@WebService(endpointInterface = "com.intesasanpaolo.Y1.view.iPocTABSOAws", serviceName = "PocTABSOAws")
-@WebService(serviceName = "PocWLP4Dockerws")
+
+//@WebService(endpointInterface = "com.intesasanpaolo.Y1.WLP4Docker.view.iPocWLP4DockerWS",serviceName = "poc")
+@WebService(serviceName = "poc", portName = "PocWLP4DockerWSPort")
 public class PocWLP4DockerWS implements iPocWLP4DockerWS {
 
 	@EJB
@@ -22,28 +22,10 @@ public class PocWLP4DockerWS implements iPocWLP4DockerWS {
 		return "Hello from EG";
 	}
 
-	public void queryQODB262(String aCodiceABI, String aCod_Tabella, String aChiave_Name, Holder<Output> aOutput) {
+	public void queryTmlResourceExit(int aID, Holder<Output> aOutput) {
 		Y1Chrono _y1chrono = new Y1Chrono();
 		_y1chrono.Start();
-		if (aCodiceABI == null || aCodiceABI.isEmpty()) {
-			aOutput.value.setRETCODE("08");
-			aOutput.value.setMESSAGGIO("in input è stato impostato un codice Azienda non valido");
-			return;
-		}
-
-		if (aCod_Tabella == null || aCod_Tabella.isEmpty()) {
-			aOutput.value.setRETCODE("11");
-			aOutput.value.setMESSAGGIO("in input è stato impostato un codice Tabella non valido");
-			return;
-		}
-
-		if (aChiave_Name == null || aChiave_Name.isEmpty()) {
-			aOutput.value.setRETCODE("12");
-			aOutput.value.setMESSAGGIO("in input è stato impostato un codice Chiave non valido");
-			return;
-		}
-
-		aOutput.value = pBS_PocWLP4Docker.queryQODB262(aCodiceABI, aCod_Tabella, aChiave_Name);
+		aOutput.value = pBS_PocWLP4Docker.queryTmlResourceExit(aID);
 		_y1chrono.Stop();
 		aOutput.value.setY1Chrono(_y1chrono);
 	}
@@ -106,5 +88,15 @@ public class PocWLP4DockerWS implements iPocWLP4DockerWS {
 
 	}
 
+	@Override
+	public String getProperties() {
+
+		JsonObjectBuilder builder = Json.createObjectBuilder();
+
+		System.getProperties().entrySet().stream()
+				.forEach(entry -> builder.add((String) entry.getKey(), (String) entry.getValue()));
+
+		return builder.build().toString();
+	}
 
 }
