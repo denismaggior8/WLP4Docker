@@ -58,6 +58,6 @@
 
 	<enterpriseApplication id="WLP4Docker-ear"
 		location="WLP4Docker-ear.ear" name="WLP4Docker-ear">
-		<web-ext context-root="WLP4Docker" moduleName="WLP4Docker-war"></web-ext>
-	</enterpriseApplication>
+<!-- 		<web-ext context-root="WLP4Docker" moduleName="WLP4Docker-war"></web-ext>
+ -->	</enterpriseApplication>
 </server>
