@@ -4,7 +4,7 @@
 #-DY1.j2cConfigProperties=Y1j2cConfig.properties
 -DY1.j2dbConfigProperties=F:/PortablesApps/wlp/Y1J2DBConfig.properties
 -DY1.ZosEnvironment=WAS
--Ddb2.jcc.propertiesFile=DB2jcc.properties
+#-Ddb2.jcc.propertiesFile=DB2jcc.properties
 -Ddb2.jcc.traceLevel=0
 #-Djava.util.logging.config.file=log4j.properties
 #-Dlog4j.configuration=file:/prodotti/prodotti_stgZ/wlpv85/xc/shared/config/appserver/log4j.properties

@@ -37,17 +37,33 @@
 		</dependency>
 
 		<!-- https://mvnrepository.com/artifact/javax.persistence/javax.persistence-api -->
-		<dependency>
-			<groupId>com.intesasanpaolo.Y1</groupId>
-			<version>1.7-3</version>
-			<artifactId>Y1UtilityClass</artifactId>
-		</dependency>
-		<dependency>
+
+<!-- 		<dependency>
 			<groupId>com.intesasanpaolo.Y1</groupId>
 			<artifactId>Y1J2DB</artifactId>
 			<version>1.7-3</version>
 		</dependency>
-
+		<dependency>
+			<groupId>com.intesasanpaolo.Y1</groupId>
+			<artifactId>Y1J2DB_API_Client</artifactId>
+			<version>1.7-1</version>
+		</dependency>
+		<dependency>
+			<groupId>com.intesasanpaolo.Y1</groupId>
+			<artifactId>Y1J2DB_API_Control</artifactId>
+			<version>1.7-1</version>
+		</dependency>
+		<dependency>
+			<groupId>com.intesasanpaolo.Y1</groupId>
+			<artifactId>Y1UtilityClass</artifactId>
+			<version>1.7-1</version>
+		</dependency>
+ -->
+		<dependency>
+			<groupId>com.intesasanpaolo.Y1</groupId>
+			<artifactId>Y1UtilityClass</artifactId>
+			<version>1.7-1</version>
+		</dependency>
 	</dependencies>
 
 

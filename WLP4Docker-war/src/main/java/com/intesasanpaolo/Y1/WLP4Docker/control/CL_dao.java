@@ -11,11 +11,8 @@ import javax.persistence.Query;
 
 import org.apache.log4j.Logger;
 
-import com.intesasanpaolo.Y1.Utility.Y1Exception;
 import com.intesasanpaolo.Y1.WLP4Docker.model.TABSOA;
 import com.intesasanpaolo.Y1.WLP4Docker.model.TmlResourceExit;
-import com.intesasanpaolo.Y1.view.iJ2DB;
-import com.intesasanpaolo.Y1.was.J2DBimpl;
 
 
 
@@ -23,7 +20,7 @@ public class CL_dao {
 	public Logger pLog;
 
 	protected EntityManager pEntityManager;
-	protected iJ2DB pJ2DB;
+//	protected iJ2DB pJ2DB;
 
 	@PostConstruct
 	public void init() {
@@ -59,12 +56,12 @@ public class CL_dao {
 
 		List<TmlResourceExit> _rowList = null;
 
-		try {
-			pJ2DB = new J2DBimpl();
-		} catch (Y1Exception e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		}
+//		try {
+//			pJ2DB = new J2DBimpl();
+//		} catch (Y1Exception e1) {
+//			// TODO Auto-generated catch block
+//			e1.printStackTrace();
+//		}
 		
 		
 		try {
@@ -131,6 +128,6 @@ public class CL_dao {
 
 		EntityManagerFactory _emf = pEntityManager.getEntityManagerFactory();
 		Cache _c = _emf.getCache();
-		_c.evict(TABSOA.class);
+		_c.evict(TmlResourceExit.class);
 	}
 }

@@ -35,6 +35,22 @@
 			<version>4.12</version>
 			<scope>test</scope>
 		</dependency>
+		<dependency>
+			<groupId>com.ibm.db2.jcc</groupId>
+			<artifactId>db2jcc4</artifactId>
+			<version>4.26.16</version>
+		</dependency>
+		<dependency>
+			<groupId>com.ibm.db2.jcc</groupId>
+			<artifactId>db2jcc_license_cisuz</artifactId>
+			<version>4.26.16</version>
+		</dependency>
+		<dependency>
+			<groupId>com.ibm.db2.jcc</groupId>
+			<artifactId>db2jcc_javax</artifactId>
+			<version>4.26.16</version>
+		</dependency>
+
 	</dependencies>
 
 	<build>
@@ -69,8 +85,10 @@
 						<version>19.0.0.11</version>
 						<type>zip</type>
 					</assemblyArtifact>
-					<serverName>WLP4DockerServer</serverName>
+					<serverName>${server.name}</serverName>
 					<configFile>src/main/liberty/config/server.xml</configFile>
+					<jvmOptionsFile>src/main/liberty/config/jvm.options</jvmOptionsFile>
+
 					<appsDirectory>apps</appsDirectory>
 					<packageFile>${package.file}</packageFile>
 					<include>${packaging.type}</include>
@@ -96,6 +114,9 @@
 						<goals>
 							<goal>create-server</goal>
 						</goals>
+						<configuration>
+<!-- 							<serverName>WLP4DockerServer</serverName> -->
+						</configuration>
 					</execution>
 					<!-- Install the app into the apps/ directory of defaultServer -->
 					<execution>
@@ -105,6 +126,7 @@
 							<goal>install-apps</goal>
 						</goals>
 						<configuration>
+<!-- 							<serverName>WLP4DockerServer</serverName> -->
 							<appsDirectory>apps</appsDirectory>
 							<stripVersion>true</stripVersion>
 							<installAppPackages>project</installAppPackages>
@@ -117,6 +139,9 @@
 						<goals>
 							<goal>test-start-server</goal>
 						</goals>
+						<configuration>
+<!-- 							<serverName>WLP4DockerServer</serverName> -->
+						</configuration>
 					</execution>
 					<!-- <execution> <id>stop-server</id> <phase>post-integration-test</phase> 
 						<goals> <goal>test-stop-server</goal> </goals> </execution> -->
@@ -147,6 +172,54 @@
 						</goals>
 					</execution>
 				</executions>
+			</plugin>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-dependency-plugin</artifactId>
+				<version>3.1.1</version>
+				<executions>
+					<execution>
+						<id>copy</id>
+						<phase>prepare-package</phase>
+						<goals>
+							<goal>copy</goal>
+						</goals>
+					</execution>
+				</executions>
+				<configuration>
+					<artifactItems>
+						<artifactItem>
+							<groupId>com.ibm.db2.jcc</groupId>
+							<artifactId>DB2jcc4</artifactId>
+							<version>4.26.16</version>
+							<type>jar</type>
+							<overWrite>true</overWrite>
+							<outputDirectory>${project.build.directory}/liberty/wlp/usr/shared/db2lib/</outputDirectory>
+							<destFileName>DB2jcc4.jar</destFileName>
+						</artifactItem>
+						<artifactItem>
+							<groupId>com.ibm.db2.jcc</groupId>
+							<artifactId>db2jcc_license_cisuz</artifactId>
+							<version>4.26.16</version>
+							<type>jar</type>
+							<overWrite>true</overWrite>
+							<outputDirectory>${project.build.directory}/liberty/wlp/usr/shared/db2lib/</outputDirectory>
+							<destFileName>db2jcc_license_cisuz.jar</destFileName>
+						</artifactItem>
+						<artifactItem>
+							<groupId>com.ibm.db2.jcc</groupId>
+							<artifactId>db2jcc_javax</artifactId>
+							<version>4.26.16</version>
+							<type>jar</type>
+							<overWrite>true</overWrite>
+							<outputDirectory>${project.build.directory}/liberty/wlp/usr/shared/db2lib/</outputDirectory>
+							<destFileName>db2jcc_javax.jar</destFileName>
+						</artifactItem>
+					</artifactItems>
+					<overWriteReleases>false</overWriteReleases>
+					<overWriteSnapshots>true</overWriteSnapshots>
+				</configuration>
 			</plugin>
 		</plugins>
 	</build>
