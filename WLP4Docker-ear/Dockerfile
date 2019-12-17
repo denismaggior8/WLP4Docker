@@ -3,9 +3,10 @@
 FROM open-liberty
 # end::from[]
 
-#COPY --chown=1001:0 src/main/liberty/config/ /config/
-COPY --chown=1001:0 target/liberty/wlp/ /wlp/
-COPY --chown=1001:0 target/WLP4Docker-ear.ear /config/apps/WLP4Docker.ear
+COPY --chown=1001:0 target/liberty/wlp/usr/ /wlp/usr/
+COPY --chown=1001:0 target/liberty/wlp/usr/servers/defaultServer/apps/WLP4Docker.ear /config/apps/WLP4Docker.ear
+COPY --chown=1001:0 target/liberty/wlp/usr/servers/defaultServer/apps/WLP4Docker.ear /wlp/usr/servers/defaultServer/apps/WLP4Docker.ear
+COPY --chown=1001:0 src/main/liberty/config /config/
 
 # tag::user-root[]
 USER root
