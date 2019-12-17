@@ -5,6 +5,9 @@
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/java"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/.apt_generated"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/resources"/>
+        <dependent-module archiveName="Y1UtilityClassWLP-1.0.0.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/Y1UtilityClassSB/Y1UtilityClassSB">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
         <property name="java-output-path" value="/WLP4Docker-war/target/classes"/>
         <property name="component.exclusion.patterns" value="pom.xml"/>
         <property name="context-root" value="WLP4Docker"/>
