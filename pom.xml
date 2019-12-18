@@ -26,8 +26,10 @@
 		<app.context.root>Poc</app.context.root>
 		<testServerHttpPort>9080</testServerHttpPort>
 		<testServerHttpsPort>9443</testServerHttpsPort>
+        <package.file>${project.build.directory}/${app.name}.zip</package.file>
+        <version.liberty-maven-plugin>3.1</version.liberty-maven-plugin>
 
-		<server.name>WLP4DockerServer</server.name>
+		<server.name>defaultServer</server.name>
 	</properties>
 
 	<modules>

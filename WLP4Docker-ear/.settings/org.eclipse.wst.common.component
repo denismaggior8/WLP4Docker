@@ -5,14 +5,5 @@
         <dependent-module archiveName="WLP4Docker-war.war" deploy-path="/" handle="module:/resource/WLP4Docker-war/WLP4Docker-war">
             <dependency-type>uses</dependency-type>
         </dependent-module>
-        <dependent-module archiveName="db2jcc4.jar" deploy-path="/" handle="module:/classpath/var/M2_REPO/com/ibm/db2/jcc/db2jcc4/4.26.16/db2jcc4-4.26.16.jar">
-            <dependency-type>uses</dependency-type>
-        </dependent-module>
-        <dependent-module archiveName="db2jcc_license_cisuz.jar" deploy-path="/" handle="module:/classpath/var/M2_REPO/com/ibm/db2/jcc/db2jcc_license_cisuz/4.26.16/db2jcc_license_cisuz-4.26.16.jar">
-            <dependency-type>uses</dependency-type>
-        </dependent-module>
-        <dependent-module archiveName="db2jcc_javax.jar" deploy-path="/" handle="module:/classpath/var/M2_REPO/com/ibm/db2/jcc/db2jcc_javax/4.26.16/db2jcc_javax-4.26.16.jar">
-            <dependency-type>uses</dependency-type>
-        </dependent-module>
     </wb-module>
 </project-modules>
